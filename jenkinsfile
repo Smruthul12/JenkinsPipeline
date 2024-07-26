@@ -7,7 +7,7 @@ pipeline {
         stage('Clean workspace and Navigate to the folder'){
             steps{
                 cleanWs()
-                bat 'copy C:\\\\Users\\\\smrut\\\\OneDrive\\\\Desktop\\\\Demo "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\PipeLine1"'
+                bat 'copy C:\\\\Users\\\\smrut\\\\OneDrive\\\\Desktop\\\\Demo "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\PipeLine2_SCM"'
             }
         }
         stage('Build') {
