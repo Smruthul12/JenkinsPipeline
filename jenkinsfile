@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    tools{
+     jdk 'java21'
+    }
+    stages {
+        stage('Clean workspace and Navigate to the folder'){
+            steps{
+                cleanWs()
+                bat 'copy C:\\\\Users\\\\smrut\\\\OneDrive\\\\Desktop\\\\Demo "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\PipeLine1"'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'javac HelloWorld.java'
+            }
+        }
+        stage('Jar') {
+            steps {
+                bat 'jar cfe myJar.jar HelloWorld HelloWorld.class'
+            }
+        }
+        stage('Run') {
+            steps {
+                bat 'java -jar myJar.jar'
+            }
+        }
+        stage('Artifact'){
+            steps{
+                archiveArtifacts artifacts: '*.jar', followSymlinks: false
+            }
+        }
+    }
+}
